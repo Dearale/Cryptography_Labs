@@ -1,0 +1,14 @@
+# Visual Studio settings and caches
+.vs/
+*.user
+*.suo
+
+# .NET build output (including nested projects)
+bin/
+obj/
+
+# Test results and coverage output
+TestResults/
+coverage/
+*.coverage
+*.coveragexml

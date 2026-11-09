@@ -33,13 +33,14 @@ namespace Lab1
 
             foreach (string file in files)
             {
-                if (!File.Exists(file))
+                string inputPath = Path.Combine(AppContext.BaseDirectory, file);
+                if (!File.Exists(inputPath))
                 {
                     Console.WriteLine($"Файл {file} не найден, пропускаем.");
                     continue;
                 }
 
-                await TestFile(file);
+                await TestFile(inputPath);
             }
         }
 

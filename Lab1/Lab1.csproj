@@ -8,10 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Labs.Tests\**\*.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Compile Remove="DesDemo.cs" />
   </ItemGroup>
 

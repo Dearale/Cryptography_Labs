@@ -1,4 +1,6 @@
 <Solution>
-  <Project Path="Labs.csproj" />
-  <Project Path="Labs.Tests/Labs.Tests.csproj" />
+  <Project Path="Lab1/Lab1.csproj" />
+  <Project Path="Lab1.Tests/Lab1.Tests.csproj" />
+  <Project Path="Lab2/Lab2.csproj" />
+  <Project Path="Lab2.Tests/Lab2.Tests.csproj" />
 </Solution>

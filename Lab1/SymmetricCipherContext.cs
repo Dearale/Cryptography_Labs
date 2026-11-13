@@ -97,7 +97,7 @@ namespace Lab1
             await using FileStream input = OpenInputFile(inputPath);
             await using FileStream output = OpenOutputFile(outputPath);
 
-            byte[] buffer = new byte[FileBufferSize];
+            byte[] buffer = new byte[GetAlignedFileBufferSize()];
             var state = new OperationState(iv, cipher.BlockSize);
 
             while (true)
@@ -122,7 +122,7 @@ namespace Lab1
                 throw new ArgumentException("Размер зашифрованных данных должен быть кратен размеру блока");
 
             await using FileStream output = OpenOutputFile(outputPath);
-            byte[] buffer = new byte[FileBufferSize];
+            byte[] buffer = new byte[GetAlignedFileBufferSize()];
             var state = new OperationState(iv, cipher.BlockSize);
 
             while (true)
@@ -142,6 +142,10 @@ namespace Lab1
                 await output.WriteAsync(decrypted);
             }
         }
+
+        // Keep each streaming chunk aligned even for 24-byte Rijndael blocks.
+        private int GetAlignedFileBufferSize() =>
+            Math.Max(cipher.BlockSize, FileBufferSize - FileBufferSize % cipher.BlockSize);
 
         private static FileStream OpenInputFile(string path) => new FileStream(
             path, FileMode.Open, FileAccess.Read, FileShare.Read, FileBufferSize,
